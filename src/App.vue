@@ -1,25 +1,24 @@
 <script setup lang="ts">
+const base = import.meta.env.BASE_URL
+
 const products = [
   {
     name: 'Special Dog',
     description: 'Oferece uma refeição completa rica em proteínas e vitaminas.',
-    image:
-      'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80',
-    blob: 'pink',
+    image: `${base}products/special-dog.png`,
+    blob: `${base}products/blob-pink.png`,
   },
   {
     name: 'Biscrok',
     description: 'Biscoitos crocantes em formato de ossos com cálcio e ômega 6.',
-    image:
-      'https://images.unsplash.com/photo-1568640347023-a616a05da3c8?auto=format&fit=crop&w=400&q=80',
-    blob: 'yellow',
+    image: `${base}products/biscrok.png`,
+    blob: `${base}products/blob-yellow.png`,
   },
   {
     name: 'Drools',
     description: 'Pedaços reais de fígado de frango e frango em molho.',
-    image:
-      'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=400&q=80',
-    blob: 'blue',
+    image: `${base}products/drools.png`,
+    blob: `${base}products/blob-blue.png`,
   },
 ]
 
@@ -30,8 +29,6 @@ const dogAvatars = [
   'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=100&q=80',
   'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=100&q=80',
 ]
-
-const base = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -170,8 +167,13 @@ const base = import.meta.env.BASE_URL
           :key="product.name"
           class="product"
         >
-          <div class="product-media" :class="`blob-${product.blob}`">
-            <img :src="product.image" :alt="product.name" />
+          <div class="product-media">
+            <img class="product-blob" :src="product.blob" alt="" />
+            <img
+              class="product-bag"
+              :src="product.image"
+              :alt="product.name"
+            />
           </div>
           <h3>{{ product.name }}</h3>
           <p>{{ product.description }}</p>
