@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+
 const base = import.meta.env.BASE_URL
 
 const products = [
@@ -29,11 +31,33 @@ const dogAvatars = [
   'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=100&q=80',
   'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=100&q=80',
 ]
+
+let observer: IntersectionObserver | null = null
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer?.unobserve(entry.target)
+        }
+      }
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+  )
+
+  document.querySelectorAll('.reveal').forEach((el) => observer?.observe(el))
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
 </script>
 
 <template>
   <div class="page">
-    <header class="topbar">
+    <header class="topbar reveal reveal-down">
       <a class="brand" href="#topo">
         <svg class="brand-icon" viewBox="0 0 40 40" aria-hidden="true">
           <circle cx="12" cy="14" r="5" fill="currentColor" />
@@ -54,28 +78,28 @@ const dogAvatars = [
     <main id="topo">
       <!-- HERO -->
       <section class="hero">
-        <div class="hero-copy">
+        <div class="hero-copy reveal reveal-left">
           <h1>Ajude quem realmente precisa da sua ajuda.</h1>
           <p>Com apenas 1 real você pode me ajudar a alimentar cães de rua.</p>
           <a class="btn" href="#doar">AJUDAR AGORA</a>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual reveal reveal-right" aria-hidden="true">
           <div class="hero-stripe" />
-          <div class="hero-blob" />
+          <div class="hero-blob float-slow" />
 
           <img
-            class="paw paw-azul"
+            class="paw paw-azul float"
             :src="`${base}hero/pata-azul.png`"
             alt=""
           />
           <img
-            class="paw paw-roxa"
+            class="paw paw-roxa float float-delay-1"
             :src="`${base}hero/pata-roxa.png`"
             alt=""
           />
           <img
-            class="paw paw-rosa"
+            class="paw paw-rosa float float-delay-2"
             :src="`${base}hero/pata-rosa.png`"
             alt=""
           />
@@ -94,8 +118,8 @@ const dogAvatars = [
           <img
             v-for="(src, i) in dogAvatars"
             :key="src"
-            class="avatar"
-            :class="`avatar-${i + 1}`"
+            class="avatar float"
+            :class="[`avatar-${i + 1}`, `float-delay-${(i % 3) + 1}`]"
             :src="src"
             alt=""
           />
@@ -104,35 +128,35 @@ const dogAvatars = [
 
       <!-- ABOUT -->
       <section class="about" id="sobre">
-        <div class="about-visual" aria-hidden="true">
+        <div class="about-visual reveal reveal-left" aria-hidden="true">
           <img class="about-blob" :src="`${base}about/blob.png`" alt="" />
           <img
-            class="about-icon about-paw-fill about-paw-fill-1"
+            class="about-icon about-paw-fill about-paw-fill-1 float"
             :src="`${base}about/pata-azul-1.png`"
             alt=""
           />
           <img
-            class="about-icon about-paw-fill about-paw-fill-2"
+            class="about-icon about-paw-fill about-paw-fill-2 float float-delay-1"
             :src="`${base}about/pata-azul-2.png`"
             alt=""
           />
           <img
-            class="about-icon about-paw-fill about-paw-fill-3"
+            class="about-icon about-paw-fill about-paw-fill-3 float float-delay-2"
             :src="`${base}about/pata-azul-3.png`"
             alt=""
           />
           <img
-            class="about-icon about-paw-outline about-paw-outline-1"
+            class="about-icon about-paw-outline about-paw-outline-1 float"
             :src="`${base}about/pata-outline-1.png`"
             alt=""
           />
           <img
-            class="about-icon about-paw-outline about-paw-outline-2"
+            class="about-icon about-paw-outline about-paw-outline-2 float float-delay-1"
             :src="`${base}about/pata-outline-2.png`"
             alt=""
           />
           <img
-            class="about-icon about-osso"
+            class="about-icon about-osso float float-delay-2"
             :src="`${base}about/osso.svg`"
             alt=""
           />
@@ -148,7 +172,7 @@ const dogAvatars = [
           />
         </div>
 
-        <div class="about-copy">
+        <div class="about-copy reveal reveal-right">
           <h2>Os cães falam, mas apenas para quem sabe ouvir.</h2>
           <p>
             Descubra histórias encantadoras, segredos reveladores e a profunda
@@ -163,9 +187,10 @@ const dogAvatars = [
       <!-- PRODUCTS -->
       <section class="products" id="doar">
         <article
-          v-for="product in products"
+          v-for="(product, index) in products"
           :key="product.name"
-          class="product"
+          class="product reveal reveal-up"
+          :style="{ '--delay': `${index * 0.12}s` }"
         >
           <div class="product-media">
             <img class="product-blob" :src="product.blob" alt="" />
@@ -182,7 +207,7 @@ const dogAvatars = [
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer reveal reveal-up">
       <p>© {{ new Date().getFullYear() }} HelpDog — Ajude quem precisa.</p>
     </footer>
   </div>
