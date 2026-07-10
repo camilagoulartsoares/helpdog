@@ -108,25 +108,56 @@ const base = import.meta.env.BASE_URL
       <!-- ABOUT -->
       <section class="about" id="sobre">
         <div class="about-visual" aria-hidden="true">
-          <div class="about-blob" />
+          <img class="about-blob" :src="`${base}about/blob.png`" alt="" />
           <img
-            class="about-dog"
-            src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=600&q=80"
+            class="about-icon about-paw-fill about-paw-fill-1"
+            :src="`${base}about/pata-azul-1.png`"
             alt=""
           />
-          <span class="deco deco-bowl">🥣</span>
-          <span class="deco deco-bone">🦴</span>
-          <span class="deco deco-paw">🐾</span>
-          <span class="deco deco-bone-2">🦴</span>
+          <img
+            class="about-icon about-paw-fill about-paw-fill-2"
+            :src="`${base}about/pata-azul-2.png`"
+            alt=""
+          />
+          <img
+            class="about-icon about-paw-fill about-paw-fill-3"
+            :src="`${base}about/pata-azul-3.png`"
+            alt=""
+          />
+          <img
+            class="about-icon about-paw-outline about-paw-outline-1"
+            :src="`${base}about/pata-outline-1.png`"
+            alt=""
+          />
+          <img
+            class="about-icon about-paw-outline about-paw-outline-2"
+            :src="`${base}about/pata-outline-2.png`"
+            alt=""
+          />
+          <img
+            class="about-icon about-osso"
+            :src="`${base}about/osso.svg`"
+            alt=""
+          />
+          <img
+            class="about-icon about-pote"
+            :src="`${base}about/pote.png`"
+            alt=""
+          />
+          <img
+            class="about-dog"
+            :src="`${base}about/cachorro.png`"
+            alt=""
+          />
         </div>
 
         <div class="about-copy">
           <h2>Os cães falam, mas apenas para quem sabe ouvir.</h2>
           <p>
-            Há quem diga que os cães não falam. Mas para quem sabe ouvir, eles
-            dizem muito. Eles falam com o olhar, com o corpo, com o coração. E
-            quando a gente aprende a escutar, nasce uma conexão que transforma
-            vidas — a deles e a nossa.
+            Descubra histórias encantadoras, segredos reveladores e a profunda
+            conexão entre humanos e seus leais companheiros. Prepare-se para uma
+            jornada única, onde a linguagem dos cães ganha vida para aqueles que
+            estão sintonizados com o inexplorado mundo canino.
           </p>
           <a class="btn" href="#doar">SAIBA MAIS</a>
         </div>
