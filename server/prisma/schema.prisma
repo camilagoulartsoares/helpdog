@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  id           Int      @id @default(1)
+  title        String
+  description  String
+  goalCents    Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  donations    Donation[]
+}
+
+model Donation {
+  id          Int      @id @default(autoincrement())
+  campaignId  Int
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  donorName   String
+  donorEmail  String?
+  amountCents Int
+  message     String?
+  createdAt   DateTime @default(now())
+
+  @@index([campaignId, createdAt])
+}

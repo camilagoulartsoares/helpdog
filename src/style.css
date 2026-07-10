@@ -150,6 +150,10 @@ a {
   max-width: 1180px;
   margin: 0 auto;
   padding: 1.35rem clamp(1rem, 4vw, 2.5rem) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .brand {
@@ -592,6 +596,274 @@ a {
   font-size: clamp(0.88rem, 2.2vw, 0.92rem);
   line-height: 1.5;
   color: #222;
+}
+
+.topbar-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(15, 76, 92, 0.06);
+  transition: background 0.2s ease;
+}
+
+.topbar-link:hover {
+  background: rgba(15, 76, 92, 0.12);
+}
+
+.donate {
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 3rem) clamp(4rem, 9vw, 6rem);
+  background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
+}
+
+.donate-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+.donate-kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.donate-progress h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.2;
+}
+
+.donate-desc {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+.progress-card {
+  padding: 1.1rem 1.2rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(15, 76, 92, 0.1);
+  box-shadow: 0 10px 30px rgba(15, 76, 92, 0.06);
+}
+
+.progress-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.progress-meta strong {
+  font-size: 1.35rem;
+}
+
+.progress-meta span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.progress-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(15, 76, 92, 0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0f4c5c, #2a9d8f);
+  transition: width 0.5s ease;
+}
+
+.progress-foot {
+  margin: 0.75rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.donors {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.donors li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(15, 76, 92, 0.08);
+}
+
+.donors strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.donors span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.donors em {
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.donate-form {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.35rem;
+  border-radius: 18px;
+  background: #0f4c5c;
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(15, 76, 92, 0.22);
+}
+
+.donate-form h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.form-hint {
+  margin: -0.35rem 0 0.2rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+}
+
+.form-hint--warn {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  border-radius: 10px;
+  background: rgba(254, 240, 166, 0.16);
+  color: var(--yellow);
+  line-height: 1.45;
+}
+
+.form-hint--warn code {
+  font-size: 0.82em;
+}
+
+.donate-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.donate-form input,
+.donate-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  outline: none;
+}
+
+.donate-form input:focus,
+.donate-form textarea:focus {
+  border-color: rgba(254, 240, 166, 0.8);
+}
+
+.donate-form input::placeholder,
+.donate-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.amount-presets {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.amount-presets legend {
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.amount-presets {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.preset {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 0.2rem;
+  cursor: pointer;
+}
+
+.preset.is-active,
+.preset:hover {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.donate-form .btn {
+  margin-top: 0.35rem;
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.donate-form .btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.form-error,
+.form-success {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.form-error {
+  color: #ffd0d0;
+}
+
+.form-success {
+  color: #d7ffe8;
+}
+
+.product .btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+@media (max-width: 900px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .footer {

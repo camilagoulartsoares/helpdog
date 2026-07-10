@@ -1,12 +1,16 @@
 {
   "name": "helpdog",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "npm run dev --prefix server",
+    "dev:all": "npm run db:setup --prefix server && concurrently -k -n web,api -c cyan,magenta \"npm run dev\" \"npm run dev:api\"",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "build:api": "npm run build --prefix server",
+    "preview": "vite preview",
+    "db:setup": "npm run db:setup --prefix server"
   },
   "dependencies": {
     "vue": "^3.5.39"
@@ -15,6 +19,7 @@
     "@types/node": "^24.13.2",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/tsconfig": "^0.9.1",
+    "concurrently": "^9.2.1",
     "typescript": "~6.0.2",
     "vite": "^8.1.1",
     "vue-tsc": "^3.3.5"
