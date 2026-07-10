@@ -170,7 +170,7 @@ const dogAvatars = [
           <div class="product-media">
             <img class="product-blob" :src="product.blob" alt="" />
             <img
-              class="product-bag"
+              class="product-pack"
               :src="product.image"
               :alt="product.name"
             />
