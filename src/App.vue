@@ -28,7 +28,10 @@ const dogAvatars = [
   'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=100&q=80',
   'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=100&q=80',
   'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=100&q=80',
+  'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=100&q=80',
 ]
+
+const base = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -63,11 +66,34 @@ const dogAvatars = [
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-stripe" />
           <div class="hero-blob" />
+
           <img
-            class="hero-dog"
-            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=700&q=80"
+            class="paw paw-azul"
+            :src="`${base}hero/pata-azul.png`"
             alt=""
           />
+          <img
+            class="paw paw-roxa"
+            :src="`${base}hero/pata-roxa.png`"
+            alt=""
+          />
+          <img
+            class="paw paw-rosa"
+            :src="`${base}hero/pata-rosa.png`"
+            alt=""
+          />
+
+          <img
+            class="hero-dog"
+            :src="`${base}hero/cachorro.png`"
+            alt=""
+          />
+          <img
+            class="hero-racao"
+            :src="`${base}hero/racao.png`"
+            alt=""
+          />
+
           <img
             v-for="(src, i) in dogAvatars"
             :key="src"
@@ -76,10 +102,6 @@ const dogAvatars = [
             :src="src"
             alt=""
           />
-          <span class="paw paw-1">🐾</span>
-          <span class="paw paw-2">🐾</span>
-          <span class="paw paw-3">🐾</span>
-          <span class="paw paw-4">🐾</span>
         </div>
       </section>
 
